@@ -1,6 +1,27 @@
 # Kiến Thức Nền Tảng Unity
 
-## 1\. Tìm hiểu MonoBehaviour
+## 1. Bài cũ: Tham chiếu, tham trị
+
+**Truyền tham trị (Value Type):** Là truyền giá trị của biến. Nghĩa là nó sẽ tạo ra một ô nhớ mới (bản sao) để lưu trữ. Mọi thay đổi bên trong phương thức (hoặc qua biến mới) không làm thay đổi biến gốc.
+```csharp
+int x = 10;
+int y = x; // Sao chép giá trị 10 sang y
+y = 20; // Thay đổi y
+Console.WriteLine(x); // Kết quả: 10 (x không bị thay đổi)
+Console.WriteLine(y); // Kết quả: 20
+```
+
+**Truyền tham chiếu (Reference Type):** Là truyền địa chỉ ô nhớ của biến. Do đó, khi thay đổi giá trị của biến bên trong phương thức (hoặc thông qua một biến tham chiếu khác cùng trỏ tới), dữ liệu của biến gốc cũng bị thay đổi theo.
+```csharp
+public class Person { public string Name; }
+Person p1 = new Person() { Name = "An" };
+Person p2 = p1; // p2 trỏ cùng địa chỉ ô nhớ trên Heap với p1
+p2.Name = "Bình"; // Thay đổi qua p2
+Console.WriteLine(p1.Name); // Kết quả: Bình (p1 bị ảnh hưởng)
+Console.WriteLine(p2.Name); // Kết quả: Bình
+```
+
+## 2\. MonoBehaviour
 
 Trong Unity, Mono Behaviour là lớp cơ sở (base class) mặc định mà mọi script kế thừa khi được tạo ra.
 
@@ -9,7 +30,7 @@ Trong Unity, Mono Behaviour là lớp cơ sở (base class) mặc định mà m�
 
 Lưu ý: Nếu xóa đoạn “: MonoBehaviour” đi, script đó sẽ không thể gắn vào GameObject được nữa.
 
-## 2\. Vòng đời của 1 Script (Script Lifecycle)
+## 3\. Vòng đời của 1 Script
 
 Vòng đời của một script là thứ tự mà Unity tự động gọi các hàm (event functions) bên trong MonoBehaviour từ lúc script được sinh ra cho đến khi bị phá hủy.
 
@@ -33,7 +54,7 @@ Vòng đời của một script là thứ tự mà Unity tự động gọi các
 * OnDisable(): Gọi khi GameObject hoặc script bị tắt đi. Dùng để reset các chỉ số hoặc hủy đăng ký sự kiện.  
 * OnDestroy(): Gọi một lần duy nhất khi GameObject bị xóa khỏi bộ nhớ (khi gọi hàm Destroy()). Dùng để dọn dẹp rác, giải phóng tài nguyên.
 
-## 3\. Tìm hiểu Class C\# thuần
+## 4\. Tìm hiểu Class C\# thuần
 
 Class C\# thuần đơn giản là những class không kế thừa từ MonoBehaviour.
 
