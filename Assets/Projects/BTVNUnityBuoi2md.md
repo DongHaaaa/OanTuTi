@@ -3,6 +3,7 @@
 ## 1. Bài cũ: Tham chiếu, tham trị
 
 **Truyền tham trị (Value Type):** Là truyền giá trị của biến. Nghĩa là nó sẽ tạo ra một ô nhớ mới (bản sao) để lưu trữ. Mọi thay đổi bên trong phương thức (hoặc qua biến mới) không làm thay đổi biến gốc.
+
 ```csharp
 int x = 10;
 int y = x; // Sao chép giá trị 10 sang y
@@ -12,6 +13,7 @@ Console.WriteLine(y); // Kết quả: 20
 ```
 
 **Truyền tham chiếu (Reference Type):** Là truyền địa chỉ ô nhớ của biến. Do đó, khi thay đổi giá trị của biến bên trong phương thức (hoặc thông qua một biến tham chiếu khác cùng trỏ tới), dữ liệu của biến gốc cũng bị thay đổi theo.
+
 ```csharp
 public class Person { public string Name; }
 Person p1 = new Person() { Name = "An" };
@@ -58,21 +60,18 @@ Vòng đời của một script là thứ tự mà Unity tự động gọi các
 
 Class C\# thuần đơn giản là những class không kế thừa từ MonoBehaviour.
 
-public class PlayerStats {
-
+```csharp
+public class PlayerStats
+{
     public int health;
-
     public int mana;
-
-    public PlayerStats(int h, int m) {
-
+    public PlayerStats(int h, int m)
+    {
         health \= h;
-
         mana \= m;
-
     }
-
 }
+```
 
 * Cách hoạt động: Unity không tự động quản lý các class này. Ta không thể kéo thả chúng vào GameObject. Để sử dụng, ta phải tự tạo ra chúng bằng từ khóa new.  
 * Ưu điểm: Hiệu suất cao, tốn ít bộ nhớ. Hỗ trợ đầy đủ các đặc tính của Lập trình hướng đối tượng (OOP) như Constructor, tính đa hình, kế thừa.  
