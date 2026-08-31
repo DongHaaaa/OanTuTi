@@ -1,6 +1,30 @@
 **Bài cũ**
 
-## **1\. Gizmos**
+## 1\. Vòng đời của 1 Script
+
+Vòng đời của một script là thứ tự mà Unity tự động gọi các hàm (event functions) bên trong MonoBehaviour từ lúc script được sinh ra cho đến khi bị phá hủy.
+
+### Giai đoạn Khởi tạo (Initialization)
+
+* **Awake():** Được gọi duy nhất một lần khi script/GameObject được load (ngay cả khi script đó đang bị tắt \- disable). Thường dùng để gán các biến tham chiếu (reference) giữa các component.  
+* **OnEnable():** Được gọi mỗi khi script hoặc GameObject chứa nó được bật lên (Active). Có thể được gọi nhiều lần.  
+* **Start():** Được gọi duy nhất một lần ngay trước khung hình (frame) đầu tiên, nhưng chỉ khi script đang được bật. Thường dùng để khởi tạo logic game sau khi mọi Awake() đã chạy xong.
+
+### Giai đoạn Cập nhật Vật lý (Physics)
+
+* **FixedUpdate():** Được gọi theo những khoảng thời gian cố định (mặc định là 0.02s). Tất cả các tính toán liên quan đến vật lý (như Rigidbody, thêm lực) bắt buộc phải đặt ở đây để không bị giật lag khi tốc độ khung hình thay đổi.
+
+### Giai đoạn Cập nhật Logic Game (Game Logic)
+
+* **Update():** Được gọi mỗi khung hình (per frame). Tần suất gọi phụ thuộc vào FPS của game. Thường dùng để nhận input từ người chơi hoặc di chuyển nhân vật cơ bản.  
+* **LateUpdate():** Được gọi mỗi khung hình, nhưng luôn chạy sau khi tất cả các hàm Update() của mọi script đã chạy xong. Rất hữu ích cho việc làm Camera bám theo nhân vật.
+
+### Giai đoạn Kết thúc (Decommissioning)
+
+* **OnDisable():** Gọi khi GameObject hoặc script bị tắt đi. Dùng để reset các chỉ số hoặc hủy đăng ký sự kiện.  
+* **OnDestroy():** Gọi một lần duy nhất khi GameObject bị xóa khỏi bộ nhớ (khi gọi hàm Destroy()). Dùng để dọn dẹp rác, giải phóng tài nguyên.
+
+## **2\. Gizmos**
 
 Gizmos được sử dụng để vẽ các hình khối, đường thẳng, và các ký hiệu trực quan trong cửa sổ Scene. Mục đích chính của Gizmos là để debug dễ hơn hoặc hỗ trợ thiết kế level, giúp dev nhìn thấy những thành phần vô hình (như phạm vi phát hiện kẻ địch, phạm vi tấn công, v.v.).
 
@@ -16,7 +40,7 @@ Gizmos được sử dụng để vẽ các hình khối, đường thẳng, và
 - Gizmos.DrawWireSphere(Vector3 \<tâm\>, float \<bán kính\>): Vẽ một hình cầu rỗng (dạng lưới dây) với tâm và bán kính xác định.  
 - Gizmos.DrawCube(Vector3 \<tâm\>, Vector3 \<kích thước\>): Vẽ một khối lập phương đặc.
 
-## **2\. Transform và thao tác với Transform (Add assets transform)**
+## **3\. Transform và thao tác với Transform (Add assets transform)**
 
 Component Transform xác định Position, Rotation và Scale của mọi GameObj trong scene. Bất kỳ GameObj nào được tạo ra cũng bắt buộc phải có 1 Transform.
 
@@ -34,7 +58,7 @@ Component Transform xác định Position, Rotation và Scale của mọi GameOb
 
 **Cấu trúc cha con (Hierarchy):** Quản lý hệ thống phân cấp bằng cách sử dụng transform.parent (để gán hoặc lấy đối tượng cha) hoặc transform.GetChild(int index) (để lấy đối tượng con).
 
-## **3\. Lớp Time và các hàm của Time**
+## **4\. Lớp Time và các hàm của Time**
 
 Lớp Time trong Unity cung cấp thông tin về thời gian của trò chơi, giúp xử lý các chuyển động, hiệu ứng và logic vật lý mượt mà, độc lập với tốc độ khung hình (framerate) của máy tính.
 
@@ -43,7 +67,7 @@ Lớp Time trong Unity cung cấp thông tin về thời gian của trò chơi, 
 - **Time.fixeddeltatime:** Khoảng thời gian cố định giữa các lần gọi hàm FixedUpdate()  
 - **Time.UnscaledDeltatime:** Thời gian đã trôi qua kể từ frame trước, nhưng không ảnh hưởng bởi Time.timeScale 
 
-## **4\. Mathf**
+## **5\. Mathf**
 
 Mathf là một struct chứa các hàm tính toán toán học.
 
