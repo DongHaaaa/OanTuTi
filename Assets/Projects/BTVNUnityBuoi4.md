@@ -44,7 +44,7 @@ Va chạm vật lý (Collision) là khi hai vật thể rắn đập vào nhau v
   * Ít nhất 1 trong 2 GameObject **phải có Rigidbody 2D** (thường là loại Dynamic hoặc Kinematic).  
 > * **Các hàm bắt sự kiện:** OnCollisionEnter2D, OnCollisionStay2D, OnCollisionExit2D.
 
-'''
+```csharp
 using UnityEngine;
 
 public class PlayerPhysicsDemo : MonoBehaviour
@@ -85,9 +85,8 @@ public class PlayerPhysicsDemo : MonoBehaviour
         }
     }
 }
-'''
+```
 **Bài mới**
-
 
 ### **1\. Trigger (Xuyên thấu)**
 
