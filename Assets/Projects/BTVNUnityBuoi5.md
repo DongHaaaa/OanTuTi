@@ -46,7 +46,7 @@ Cơ chế sự kiện hoạt động theo mô hình Observer (Publisher - Subscr
 
 ---
 
-### 1. Delegate (Tìm hiểu sơ qua)
+### 1. Delegate
 
 Delegate là một kiểu dữ liệu tham chiếu đại diện cho các hàm có cùng danh sách tham số và kiểu trả về. Nó đóng vai trò như một con trỏ hàm an toàn (type-safe).
 
@@ -80,7 +80,7 @@ public class DelegateExample : MonoBehaviour
 
 ---
 
-### 2. Action (Tìm hiểu sơ qua)
+### 2. Action
 
 `Action` là một delegate generic được C# định nghĩa sẵn thuộc namespace `System`. `Action` đại diện cho các phương thức có kiểu trả về là `void` và có thể nhận từ 0 đến 16 tham số (ví dụ: `Action`, `Action<int>`, `Action<string, float>`), giúp loại bỏ bước khai báo delegate thủ công.
 
@@ -113,7 +113,7 @@ public class ActionExample : MonoBehaviour
 
 ---
 
-### 3. UnityEvent (Tập trung chính)
+### 3. UnityEvent
 
 `UnityEvent` là lớp sự kiện do Unity xây dựng sẵn (thuộc namespace `UnityEngine.Events`).
 
@@ -162,7 +162,7 @@ public class UnityEventExample : MonoBehaviour
 
 ---
 
-### 4. Tổng hợp cách đăng ký và phát sự kiện (Invoke)
+### 4. Cách đăng ký và phát sự kiện (Invoke)
 
 | Loại | Cú pháp đăng ký | Cú pháp hủy đăng ký | Cú pháp phát sự kiện (Invoke) |
 |---|---|---|---|
